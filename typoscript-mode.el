@@ -7,7 +7,7 @@
 ;; Created: July 2009
 ;; Version: 0.2
 ;; Keywords: typo3, typoscript
-;; URL: https://github.com/ksjogo/ts-mode
+;; URL: https://github.com/ksjogo/typoscript-mode
 ;; EmacsWiki: TypoScriptMode
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -28,14 +28,9 @@
 ;;; Credits:
 
 ;; Initially taken from https://www.emacswiki.org/emacs/ts-mode.el
+;; Thanks to Joachim Mathes
 
 ;;; Code:
-
-(defconst typoscript-version "0.1"
-  "`typoscript-mode' version number.")
-
-;; User definable variables
-;; vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
 (defgroup typoscript nil
   "Major mode for editing TypoScript files."
@@ -174,18 +169,23 @@ This vector concerns only highlighting of horizontal lines.")
   "Hook run when entering TypoScript mode."
   :options '()
   :type 'hook
-  :group 'ts)
+  :group 'typoscript)
 
 ;;;###autoload
 (define-derived-mode typoscript-mode fundamental-mode "TypoScript"
   "Major mode for editing TypoScript files."
-  :group 'ts
+  :group 'typoscript
   (set (make-local-variable 'font-lock-defaults) '(typoscript-font-lock-keywords))
   (set (make-local-variable 'comment-start) "# ")
   (set (make-local-variable 'comment-end) "")
   (set (make-local-variable 'comment-start-skip) "# ")
   (set (make-local-variable 'indent-line-function) 'typoscript-indent-line)
   (set (make-local-variable 'defun-prompt-regexp) "^[ \t]*\\([[:alnum:]-_\\.]+\\)[ \t]*"))
+
+;;;###autoload
+(add-to-list 'auto-mode-alist '("setup.txt" . typoscript-mode))
+;;;###autoload
+(add-to-list 'auto-mode-alist '("constants.txt" . typoscript-mode))
 
 (defun typoscript-newline ()
   "Call the dedicated newline function.
