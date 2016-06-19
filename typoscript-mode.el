@@ -6,6 +6,7 @@
 ;; Original-Author: Joachim Mathes
 ;; Created: July 2009
 ;; Version: 0.2
+;; Package-Requires: ((emacs "24"))
 ;; Keywords: typo3, typoscript
 ;; URL: https://github.com/ksjogo/typoscript-mode
 ;; EmacsWiki: TypoScriptMode
@@ -172,7 +173,7 @@ This vector concerns only highlighting of horizontal lines.")
   :group 'typoscript)
 
 ;;;###autoload
-(define-derived-mode typoscript-mode fundamental-mode "TypoScript"
+(define-derived-mode typoscript-mode prog-mode "TypoScript"
   "Major mode for editing TypoScript files."
   :group 'typoscript
   (set (make-local-variable 'font-lock-defaults) '(typoscript-font-lock-keywords))
