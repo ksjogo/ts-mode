@@ -6,7 +6,7 @@
 ;; Original-Author: Joachim Mathes
 ;; Created: July 2009
 ;; Version: 0.2
-;; Package-Requires: ((emacs "24"))
+;; Package-Requires: ((emacs "24.4"))
 ;; Keywords: typo3, typoscript
 ;; URL: https://github.com/ksjogo/typoscript-mode
 ;; EmacsWiki: TypoScriptMode
@@ -176,12 +176,12 @@ This vector concerns only highlighting of horizontal lines.")
 (define-derived-mode typoscript-mode prog-mode "TypoScript"
   "Major mode for editing TypoScript files."
   :group 'typoscript
-  (set (make-local-variable 'font-lock-defaults) '(typoscript-font-lock-keywords))
-  (set (make-local-variable 'comment-start) "# ")
-  (set (make-local-variable 'comment-end) "")
-  (set (make-local-variable 'comment-start-skip) "# ")
-  (set (make-local-variable 'indent-line-function) 'typoscript-indent-line)
-  (set (make-local-variable 'defun-prompt-regexp) "^[ \t]*\\([[:alnum:]-_\\.]+\\)[ \t]*"))
+  (setq-local font-lock-defaults '(typoscript-font-lock-keywords))
+  (setq-local comment-start "# ")
+  (setq-local comment-end "")
+  (setq-local comment-start-skip "# ")
+  (setq-local indent-line-function 'typoscript-indent-line)
+  (setq-local defun-prompt-regexp "^[ \t]*\\([[:alnum:]-_\\.]+\\)[ \t]*"))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("setup.txt" . typoscript-mode))
