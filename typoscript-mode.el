@@ -6,7 +6,7 @@
 ;; Original-Author: Joachim Mathes
 ;; Created: July 2009
 ;; Version: 0.2
-;; Package-Requires: ((emacs "24.4"))
+;; Package-Requires: ((emacs "24.4") (use-package))
 ;; Keywords: typo3, typoscript
 ;; URL: https://github.com/ksjogo/typoscript-mode
 ;; EmacsWiki: TypoScriptMode
@@ -399,6 +399,12 @@ Return non-nil if an unfold happened, nil otherwise."
         (delete-overlay overlay)
         (setq found t)))
     found))
+
+(use-package rainbow-identifiers
+  :defer t
+  :config
+  (add-to-list 'rainbow-identifiers-faces-to-override 'typoscript-block-face)
+  (add-to-list 'rainbow-identifiers-faces-to-override 'typoscript-path-face))
 
 (provide 'typoscript-mode)
 
